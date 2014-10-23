@@ -3,59 +3,59 @@ package numberGame;
 import java.util.Scanner;
 
 public class GameBoard {
-	static int score=0;
-	static int endGameCounter=0;
-	static boolean gameLoop=true;
+	static int score = 0;
+	static int endGameCounter = 0;
+	static boolean gameLoop = true;
 	static NumberTile[][] board = new NumberTile[4][4];
-	public GameBoard(){
+	public GameBoard() {
 		NumberTile[][] board = new NumberTile[4][4];
 		int score=0;
 		boolean gameLoop=true;
 	}
-	public NumberTile[][] getBoard(){
+	public NumberTile[][] getBoard() {
 		return board;
 	}
-	public boolean getGameLoop(){
+	public boolean getGameLoop() {
 		return gameLoop;
 	}
-	public int getScore(){
+	public int getScore() {
 		return score;
 	}
 	//Start New Game Board (4X4 Array with 2 Random Tiles between 2 or 4)
-	public void CreateNewBoard(){
-		board[(int)(Math.random()*4)][(int)(Math.random()*4)]= new NumberTile();
-		int temp1 = (int)(Math.random()*4);
-		int temp2 = (int)(Math.random()*4);
-		while(board[temp1][temp2]!=null){
-			temp1 = (int)(Math.random()*4);
-			temp2 = (int)(Math.random()*4);
+	public void CreateNewBoard() {
+		board[(int)(Math.random() * 4)][(int)(Math.random() * 4)] = new NumberTile();
+		int temp1 = (int)(Math.random() * 4);
+		int temp2 = (int)(Math.random() * 4);
+		while(board[temp1][temp2]!=null) {
+			temp1 = (int)(Math.random() * 4);
+			temp2 = (int)(Math.random() * 4);
 		}
 		board[temp1][temp2]= new NumberTile();
 	}
 	
-	public void printBoard(){
+	public void printBoard() {
 
-		for(int row=0; row<board.length; row++){
-			for(int col=0; col<board.length; col++){
+		for(int row = 0; row < board.length; row++) {
+			for(int col = 0; col < board.length; col++) {
 				
 
-					System.out.print("-"+board[row][col]+"-");
+				System.out.print("-"+board[row][col]+"-");
 
-				}
-			System.out.println();
 			}
+			System.out.println();
+		}
 
 	}
 	
 	// Move Tiles Class
 	
-	public void makeMove(){
+	public void makeMove() {
 		Scanner scan= new Scanner(System.in);
 		System.out.println("Enter Row Coordinate (0-3):");
 		int tempRow= scan.nextInt();
 		System.out.println("Enter Coloumn Coordinate (0-3):");
 		int tempCol = scan.nextInt();
-		while(board[tempRow][tempCol]==null){
+		while(board[tempRow][tempCol]==null) {
 			System.out.println("There is no Tile there Pick different coordinates");
 			System.out.println("Enter Row Coordinate (0-3):");
 			tempRow= scan.nextInt();
@@ -68,7 +68,7 @@ public class GameBoard {
 	}
 	
 	
-	public static void converge(int row, int col){
+	public static void converge(int row, int col) {
 		// makes row and col into 1 d arrays to check the specific column and row of the tile selected
 		NumberTile[] tempRow = new NumberTile[4];
 		NumberTile[] tempCol = new NumberTile[4];
@@ -76,13 +76,13 @@ public class GameBoard {
 		int y=0;
 		
 		// for to create Row
-		for (NumberTile element: tempRow){
+		for (NumberTile element: tempRow) {
 			tempRow[i]=board[row][i];
 			i++;
 	}// end of for to create Row
 		
 	// for to create Col
-		for (NumberTile element: tempCol){
+		for (NumberTile element: tempCol) {
 			tempCol[y]=board[y][col];
 			y++;
 	}
@@ -111,9 +111,9 @@ public class GameBoard {
 
 	}
 
-	public static void checkRow (NumberTile[] tempRow, int row, int col){
-		for(int i=0; i<4;i++){
-			if(board[row][col]!=null&&tempRow[i]!=null){
+	public static void checkRow (NumberTile[] tempRow, int row, int col) {
+		for(int i=0; i<4;i++) {
+			if(board[row][col]!=null&&tempRow[i]!=null) {
 				
 				
 				
@@ -125,7 +125,7 @@ public class GameBoard {
 //					
 //				}
 				// else if checks to see if the space to the right is available to move to
-				if(i<3&&board[row][i+1]==null&&col>i){
+				if(i<3&&board[row][i+1]==null&&col>i) {
 					tempRow[i+1]=tempRow[i];
 					board[row][i+1]=tempRow[i];
 					board[row][i]=null;
@@ -146,7 +146,7 @@ public class GameBoard {
 					
 					
 				}
-				else if(i>0&&board[row][i-1]==null&&col<i){
+				else if(i>0&&board[row][i-1]==null&&col<i) {
 					tempRow[i-1]=tempRow[i];
 					board[row][i-1]=tempRow[i];
 					board[row][i]=null;
@@ -174,13 +174,13 @@ public class GameBoard {
 		
 	}
 	
-	public static void checkCol (NumberTile[] tempCol, int row, int col){
-		for(int y=0; y<4; y++){
-			if(board[row][col]!=null&&tempCol[y]!=null){
+	public static void checkCol (NumberTile[] tempCol, int row, int col) {
+		for(int y=0; y<4; y++) {
+			if(board[row][col]!=null&&tempCol[y]!=null) {
 //				if(board[row][col].getTileValue()==tempCol[y].getTileValue()&&y!=row&&(y==row+1||y==row-1)){
 //					board[row][col].doubleValue();
 //					board[y][col]=null;
-				if(y<3&&board[y+1][col]==null&&row>y){
+				if(y<3&&board[y+1][col]==null&&row>y) {
 					tempCol[y+1]=tempCol[y];
 					board[y+1][col]=tempCol[y];
 					board[y][col]=null;
@@ -189,7 +189,7 @@ public class GameBoard {
 				
 				}
 				
-				else if(y<3&&board[y+1][col]!=null&&board[y][col]!=null&&tempCol[y+1]!=null&&board[y+1][col].getTileValue()==board[y][col].getTileValue()&&row>y){
+				else if(y<3&&board[y+1][col]!=null&&board[y][col]!=null&&tempCol[y+1]!=null&&board[y+1][col].getTileValue()==board[y][col].getTileValue()&&row>y) {
 					
 					board[y+1][col].doubleValue();
 					score+=board[y+1][col].getTileValue();
@@ -199,7 +199,7 @@ public class GameBoard {
 					
 					
 				}
-				else if(y>0&&board[y-1][col]==null&&row<y){
+				else if(y>0&&board[y-1][col]==null&&row<y) {
 					tempCol[y-1]=tempCol[y];
 					board[y-1][col]=tempCol[y];
 					board[y][col]=null;
@@ -208,7 +208,7 @@ public class GameBoard {
 					
 					
 				}
-				else if(y>0&&board[y-1][col]!=null&&board[y][col]!=null&&tempCol[y-1]!=null&&board[y-1][col].getTileValue()==board[y][col].getTileValue()&&row<y){
+				else if(y>0&&board[y-1][col]!=null&&board[y][col]!=null&&tempCol[y-1]!=null&&board[y-1][col].getTileValue()==board[y][col].getTileValue()&&row<y) {
 					
 					board[y-1][col].doubleValue();
 					score+=board[y-1][col].getTileValue();
@@ -221,8 +221,8 @@ public class GameBoard {
 					
 					
 			}
+		}
 	}
 }
-	}
 
 
