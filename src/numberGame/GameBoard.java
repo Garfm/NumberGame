@@ -30,7 +30,7 @@ public class GameBoard {
 			temp1 = (int)(Math.random() * 4);
 			temp2 = (int)(Math.random() * 4);
 		}
-		board[temp1][temp2]= new NumberTile();
+		board[temp1][temp2] = new NumberTile();
 	}
 	
 	public void printBoard() {
@@ -39,7 +39,7 @@ public class GameBoard {
 			for(int col = 0; col < board.length; col++) {
 				
 
-				System.out.print("-"+board[row][col]+"-");
+				System.out.print("-" + board[row][col] + "-");
 
 			}
 			System.out.println();
@@ -72,38 +72,38 @@ public class GameBoard {
 		// makes row and col into 1 d arrays to check the specific column and row of the tile selected
 		NumberTile[] tempRow = new NumberTile[4];
 		NumberTile[] tempCol = new NumberTile[4];
-		int i=0;
-		int y=0;
+		int i = 0;
+		int y = 0;
 		
 		// for to create Row
 		for (NumberTile element: tempRow) {
-			tempRow[i]=board[row][i];
+			tempRow[i] = board[row][i];
 			i++;
-	}// end of for to create Row
+		}// end of for to create Row
 		
-	// for to create Col
+		// for to create Col
 		for (NumberTile element: tempCol) {
-			tempCol[y]=board[y][col];
+			tempCol[y] = board[y][col];
 			y++;
-	}
+		}
 		GameBoard.checkRow(tempRow, row, col);
 		GameBoard.checkCol(tempCol, row, col);
 		
 		
 		// creates random tile after numbers are done combining
-		int temp1 = (int)(Math.random()*4);
-		int temp2 = (int)(Math.random()*4);
-		while(board[temp1][temp2]!=null){
-			temp1 = (int)(Math.random()*4);
-			temp2 = (int)(Math.random()*4);
+		int temp1 = (int)(Math.random() * 4);
+		int temp2 = (int)(Math.random() * 4);
+		while(board[temp1][temp2] != null){
+			temp1 = (int)(Math.random() * 4);
+			temp2 = (int)(Math.random() * 4);
 			endGameCounter++;
-			if(endGameCounter+1==Integer.MAX_VALUE){
-				System.out.println("GAME OVER! Score:"+score);
-				gameLoop=false;
+			if(endGameCounter + 1 == Integer.MAX_VALUE){
+				System.out.println("GAME OVER! Score:" + score);
+				gameLoop = false;
 				break;
 			}
 		}
-		board[temp1][temp2]= new NumberTile();
+		board[temp1][temp2] = new NumberTile();
 		
 	//Combine Tiles Class
 	//Score
@@ -112,8 +112,8 @@ public class GameBoard {
 	}
 
 	public static void checkRow (NumberTile[] tempRow, int row, int col) {
-		for(int i=0; i<4;i++) {
-			if(board[row][col]!=null&&tempRow[i]!=null) {
+		for(int i = 0; i < 4; i++) {
+			if(board[row][col] != null&&tempRow[i] != null) {
 				
 				
 				
@@ -125,8 +125,8 @@ public class GameBoard {
 //					
 //				}
 				// else if checks to see if the space to the right is available to move to
-				if(i<3&&board[row][i+1]==null&&col>i) {
-					tempRow[i+1]=tempRow[i];
+				if(i < 3 && board[row][i + 1] == null && col > i) {
+					tempRow[i + 1]=tempRow[i];
 					board[row][i+1]=tempRow[i];
 					board[row][i]=null;
 					tempRow[i]=null;

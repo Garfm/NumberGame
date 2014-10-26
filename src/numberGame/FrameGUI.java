@@ -58,43 +58,35 @@ import javax.swing.JPanel;
 //     	button = new JButton("SCORE");
 //     	pane.add(button, BorderLayout.LINE_END);
 //     
-	public class FrameGUI{
-	    private Frame f;
-	    	    private Panel p;
-	    	    private Panel p2;
+public class FrameGUI{
+	private Frame f;
+	private Panel p;
+	private Panel p2;
 	    	     
-	    	    public FrameGUI(){
-	    	        f = new Frame("Code 2 Learn");
-	    	        p=new Panel();
-	    	        p2=new Panel();
-	    	    }
+	public FrameGUI(){
+		f = new Frame("Code 2 Learn");
+		p=new Panel();
+		p2=new Panel();
+	}
 	    	     
-	    	    public void launchMyFrame(){
-	    	    	f.setSize(300,300);
-	    	        f.setLayout(null); //Override the default layout manager
+	public void launchMyFrame(){
+		f.setSize(300,300);
+	    f.setLayout(null); //Override the default layout manager
 	    	         
-	    	        p.setSize(300, 300);
-	    	        p2.setSize(400,250);
-	    	        p.setBackground(Color.BLACK);
-	    	        p2.setBackground(Color.BLUE);
-	    	        f.add(p);
-	    	        f.add(p2);
-	    	        f.setVisible(true);
-	    	    }
+	    p.setSize(300, 300);
+	    p2.setSize(400,250);
+	    p.setBackground(Color.BLACK);
+	    p2.setBackground(Color.BLUE);
+	    f.add(p);
+	    f.add(p2);
+	    f.setVisible(true);
+	}
 	   	     
-	    	    public static void main(String args[]){
-	    	        FrameGUI fe=new FrameGUI();
-	    	        fe.launchMyFrame();
-	    	    
- 
-     
- 
- 
- }
- 
- 
- 
+	public static void main(String args[]){
+	    FrameGUI fe=new FrameGUI();
+	    fe.launchMyFrame();
 
- 
+	}
+
 }
 
